@@ -1,7 +1,7 @@
 import "./App.css";
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { CubeCamera, Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Box, CubeCamera, Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Ground } from "./Ground";
 import { Car } from "./Car";
 import { Rings } from "./Rings";
@@ -31,6 +31,8 @@ function CarShow() {
 
 			<Rings />
 
+			<Box position={[0, 1, 2]} rotation={[0, Math.PI / 2, 0]} scale={[1, 1, 3]} />
+
 			<Boxes />
 
 			<Grid />
@@ -40,8 +42,6 @@ function CarShow() {
 			<spotLight color={[0.14, 0.5, 1]} intensity={600} angle={0.6} penumbra={0.5} position={[-5, 5, 0]} castShadow shadow-bias={-0.0001} />
 
 			<ambientLight intensity={0.3} />
-
-			{/* <pointLight color={[0.8, 0.7, 0.6]} position={[2, 2, 2]} intensity={100} castShadow /> */}
 
 			<Ground />
 

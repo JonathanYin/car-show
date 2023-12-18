@@ -1,5 +1,5 @@
 import { MeshReflectorMaterial } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useMemo } from "react";
 import { RepeatWrapping, TextureLoader, Vector2 } from "three";
 
@@ -13,6 +13,12 @@ export function Ground() {
 			t.repeat.set(5, 5);
 		});
 	}, [normal, roughness]);
+
+	useFrame((state) => {
+		const t = -state.clock.getElapsedTime() * 0.128;
+		roughness.offset.set(0, t);
+		normal.offset.set(0, t);
+	});
 
 	const normalScale = useMemo(() => new Vector2(1, 1), []);
 
